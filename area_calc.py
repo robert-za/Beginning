@@ -10,7 +10,7 @@ print(area_circle)
 # input demo
 # name = input('Tell me your name, punk: ')
 # age = input('...and your age: ')
-# print(name, 'you are', age)
+# print(name, 'you are', age) dupa dupa
 
 # # Calc the area of a circle
 # radius = input('Enter the radius of your circle (m): ')
