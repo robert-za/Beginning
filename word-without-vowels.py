@@ -8,4 +8,4 @@ for letter in user_word:
         word_without_vowels += letter
 print(word_without_vowels)
 
-#dodaje komentarz dka githuba
+#dodaje komentarz dla githuba
