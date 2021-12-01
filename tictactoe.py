@@ -23,7 +23,7 @@ def display_board(board):
     print("|---------|---------|---------|")
 
 
-board = ['#','X','O','X','O','X','O','X','O','X']
+board = ['#','X','O','X','O','X','O','X','O',' ']
 # display_board(board)
 
 def player_input():
@@ -39,9 +39,10 @@ def player_input():
     print(f"Player 1 is now {choice} and Player 2 is {player2}.")
 # player_input()
 
-position = 10
+position = 0
 
 def place_marker(board, marker, position):
+    position = 0
     while position not in range(1, 10):
         position = int(input("Please choose a position index (1 - 9): "))
     # marker tutaj bedzie do zmiany, naprzemiennie XOXOXOXOX
@@ -50,8 +51,9 @@ def place_marker(board, marker, position):
     # do zrobienia counter dla naprzemiennych tur
     # counter += counter
     display_board(board)
+    return position, marker
 
-# place_marker(board, "%", position)
+place_marker(board, "%", position)
 
 def win_check(board, marker):
     check_status = False
@@ -91,11 +93,21 @@ def choose_first():
 # choose_first()
 
 def space_check(board, position):
-    for space in board:
-        # jesli nie rowna sie ani X ani O, to znaczy ze jest puste -> prawda ze mozna grac dalej
-        if space != "X" or space != "O":
-            return True
-        else:
-            return False
+    if board[position] == "X" or board[position] == "O":
+        print("False + w posiiton jest albo X albo O")
+        return False
+    else:
+        print("True + w position nie ma X ani O")
+        return True
 
 space_check(board, position)
+
+def full_board_check(board):
+    if " " in board:
+        print("True + gdzies w board znajduje sie puste")
+        return True
+    else:
+        print("False + w board nie ma pustego")
+        return False
+
+full_board_check(board)
