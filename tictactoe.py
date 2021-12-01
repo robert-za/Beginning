@@ -41,16 +41,19 @@ def player_input():
 
 position = 0
 
-def place_marker(board, marker, position):
-    position = 0
-    while position not in range(1, 10):
-        position = int(input("Please choose a position index (1 - 9): "))
+def place_marker(board, marker, position2):
+    while position2 not in range(1, 10):
+        position2 = int(input("Please choose a position index (1 - 9): "))
     # marker tutaj bedzie do zmiany, naprzemiennie XOXOXOXOX
+    # print(position, "TUTAJ SPRAWDZAM CO DAJE")
     marker = "X"
-    board[position] = marker
+    board[position2] = marker
     # do zrobienia counter dla naprzemiennych tur
     # counter += counter
     display_board(board)
+    global position; position = position2
+    # print(position, "TUTAJ SPRAWDZAM CO DAJE")
+    # print(position2, "TUTAJ SPRAWDZAM CO DAJE")
     return position, marker
 
 place_marker(board, "%", position)
@@ -92,22 +95,41 @@ def choose_first():
 
 # choose_first()
 
-def space_check(board, position):
+def space_check(board):
     if board[position] == "X" or board[position] == "O":
-        print("False + w posiiton jest albo X albo O")
+        # print("False + w positon jest albo X albo O", position)
         return False
     else:
-        print("True + w position nie ma X ani O")
+        # print("True + w position nie ma X ani O", position)
         return True
 
-space_check(board, position)
+# space_check(board)
 
 def full_board_check(board):
     if " " in board:
-        print("True + gdzies w board znajduje sie puste")
+        # print("True + gdzies w board znajduje sie puste")
         return True
     else:
-        print("False + w board nie ma pustego")
+        # print("False + w board nie ma pustego")
         return False
 
 full_board_check(board)
+
+next_step2 = 0
+
+def player_choice(board):
+    next_step = "Wrong"
+    while next_step not in range(1,10):
+        next_step = int(input("What is the next move? (1 - 9): "))
+    if space_check(board) == True:
+        board[position] = next_step
+    else:
+        while next_step not in range(1,10):
+            next_step = int(input("What is the next move? (1 - 9): ")) 
+    global next_step2; next_step2 = next_step
+    return next_step
+
+player_choice(board)
+
+def replay():
+    pass
