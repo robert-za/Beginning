@@ -1,5 +1,6 @@
 theBoard = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 test_board = ['#','O','O',' ','O','X','O','X','O','X']
+import os
 
 def display_board(board):
     print("|---------|---------|---------|")
@@ -33,27 +34,30 @@ def place_marker(board, marker, position):
     board[position] = marker
 
 def win_check(board, mark):
-    check_status = False
-    if board[1] == board[2] == board[3] == mark:
-        check_status = True
-    elif board[4] == board [5] == board[6] == mark:
-        check_status = True
-    elif board[7] == board[8] == board[9] == mark:
-        check_status = True
-    elif board[1] == board[4] == board[7] == mark:
-        check_status = True
-    elif board[2] == board[5] == board[8] == mark:
-        check_status = True
-    elif board[3] == board[6] == board[9] == mark:
-        check_status = True
-    elif board[1] == board[5] == board[9] == mark:
-        check_status = True
-    elif board[3] == board[5] == board[7] == mark:
-        check_status = True
-    else:
-        check_status = False
-    print(check_status)
-    return check_status
+    # check_status = False
+    return board[1] == board[2] == board[3] == mark or board[4] == board[5] == board[6] == mark or board[7] == board[8] == board[9] == mark or board[1] == board [4] == board[7] == mark or board[2] == board[5] == board[8] == mark or board[3] == board[6] == board[9] == mark or board[1] == board[5] == board[9] == mark or board[3] == board[5] == board [7] == mark
+
+
+    # if board[1] == board[2] == board[3] == mark:
+    #     check_status = True
+    # elif board[4] == board [5] == board[6] == mark:
+    #     check_status = True
+    # elif board[7] == board[8] == board[9] == mark:
+    #     check_status = True
+    # elif board[1] == board[4] == board[7] == mark:
+    #     check_status = True
+    # elif board[2] == board[5] == board[8] == mark:
+    #     check_status = True
+    # elif board[3] == board[6] == board[9] == mark:
+    #     check_status = True
+    # elif board[1] == board[5] == board[9] == mark:
+    #     check_status = True
+    # elif board[3] == board[5] == board[7] == mark:
+    #     check_status = True
+    # else:
+    #     check_status = False
+    # print(check_status)
+    # return check_status
 
 import random
 
@@ -136,6 +140,7 @@ while True:
                     break
                 else:
                     turn = 'Player 2'
+                    os.system('clear')
 
         else:
             # Player2's turn.
@@ -155,6 +160,7 @@ while True:
                     break
                 else:
                     turn = 'Player 1'
+                    os.system('clear')
 
     if not replay():
         break
