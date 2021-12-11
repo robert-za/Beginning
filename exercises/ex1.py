@@ -44,3 +44,7 @@
 #     print(True)
 # else:
 #     print(False)
+'''
+komentuje
+'''
+
