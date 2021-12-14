@@ -44,7 +44,204 @@
 #     print(True)
 # else:
 #     print(False)
-'''
-komentuje
-'''
+# '''
+# komentuje
+# '''
+
+# print("I have eaten",99,"burritos.")
+# false
+# false
+# true
+# false
+# false
+# true < > == <= >= !=
+
+# if spam == 1:
+#     print("Hello")
+# elif spam == 2:
+#     print("Howdy")
+# else:
+#     print("Greetings!")
+
+# for i in range(1,11):
+    # print(i)
+# i = 1
+# while i < 11:
+#     print(i)
+#     i += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def collatz(number):
+#     if number % 2 == 0:
+#         print(number//2)
+#         return number//2
+#     else:
+#         print(3*number+1)
+#         return (3*number+1)
+
+# while True:
+#     try:
+#         while True:
+#             user_number = int(input("give a number: "))
+#             print(user_number)
+#             while user_number > 1:
+#                 user_number = collatz(user_number)
+#             break
+#         break
+#     except ValueError:
+#         print("this is not a number")
+        
+
+
+
+
+
+
+
+
+
+
+
+# cat_names = []
+# while True:
+#     print("Enter the name of a cat " + str(len(cat_names) +1 ) + \
+#     "(Or enter nothing to stop.):")
+#     name = input()
+#     if name == "":
+#         break
+#     cat_names = cat_names + [name]
+# print("The cat names are:")
+# for name in cat_names:
+#     print("    " + name)
+
+
+# spam = ["apples", "bananas", "tofu", "cats", "mary", "cactus"]
+# spam1 = []
+
+# def list_thing(words):
+#     if words == []:
+#         print("empty")
+#     elif len(words) == 1:
+#         print(words[0])
+#     else:    
+#         print('{} and {}'.format(', '.join(words[:-1]), words[-1]))
+
+# list_thing(spam)
+
+import random
+numberOfStreaks = 0
+streak = 0
+my_list = []
+test = 0
+
+for experimentNumber in range(10000):
+    # Code that creates a list of 100 'heads' or 'tails' values.
+    my_list = []
+    for i in range(100):
+        my_list.append(random.randint(0,1))
+
+
+    # Code that checks if there is a streak of 6 heads or tails in a row.
+    for j in range(len(my_list)):
+        if j == 0:
+            pass
+        elif my_list[j] == my_list[j-1]:
+            streak += 1
+        else:
+            streak = 0
+
+        if streak == 6:
+            numberOfStreaks += 1
+            streak = 0
+
+print('Chance of streak: %s%%' % (numberOfStreaks / 100))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
