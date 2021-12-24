@@ -357,48 +357,70 @@
 # # inventory.py
 # stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
 
-def displayInventory(inventory):
-    print("Inventory:")
-    item_total = 0
-    for k, v in inventory.items():
-        # FILL THIS PART IN
-        item_total += v
-        print(v, k)
-    print("Total number of items: " + str(item_total))
+# def displayInventory(inventory):
+#     print("Inventory:")
+#     item_total = 0
+#     for k, v in inventory.items():
+#         # FILL THIS PART IN
+#         item_total += v
+#         print(v, k)
+#     print("Total number of items: " + str(item_total))
 
-def addToInventory(inventory, addedItems):
-    # your code goes here
-    for new_item in addedItems:
-        if new_item in inventory.keys():
-            inventory[new_item] += 1
-            # print(inventory)
-            # item_add.value += 1
-        else:
-            # print(new_item)
-            # inventory.setdefault(new_item, 1)
-            inventory[new_item] = 1
+# def addToInventory(inventory, addedItems):
+#     # your code goes here
+#     for new_item in addedItems:
+#         if new_item in inventory.keys():
+#             inventory[new_item] += 1
+#         else:
+#             inventory[new_item] = 1
+#     return inventory
+
+# # #def s_if_multiple(inventory):
+# #  #   for k, v in inventory.items():
+# #   #      if v > 1:
+# #    #         # print(k)
+# #     #        inventory[k+"s"] = inventory.pop(k)
+# #      #       # print(k)
+# #    # return inventory
             
 
     
     
-inv = {'gold coin': 42, 'rope': 1}
-dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
-# print(inv)
-inv = addToInventory(inv, dragonLoot)
-print(inv)
+# inv = {'gold coin': 42, 'rope': 1}
+# dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby', "rope", 
+#               "horse", "horse"]
+# inv = addToInventory(inv, dragonLoot)
+# # inv = s_if_multiple(inv)
 # displayInventory(inv)
-# print(inv)
-
-# print(inv['rope'])
 
 
 
+# print("ala ma"\
+#     "kota")
 
 
 
+# print("""ala
+# ma
+# kota""")
 
 
 
+# sentence = "Remember, remember, the fifth of November."
+
+# print(sentence)
+# print(type(sentence))
+# sentence = sentence.split()
+# print(sentence)
+# print(type(sentence))
+# print(sentence[5][-2::-1].lower())
+
+
+# rjust() ljust() center()
+# lstrip() rstrip()
+
+
+#DATE DETECTION
 
 
 
