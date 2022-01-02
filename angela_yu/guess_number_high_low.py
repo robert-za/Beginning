@@ -4,7 +4,7 @@ os.system("clear")
 print("Welcome to the high/low guess game!\nI'm thinking about a number" 
 " between 1 and 100.")
 
-the_number = random.randint(1,10)
+the_number = random.randint(1,100)
 difficulty_list = ["easy", "hard"]
 difficulty = ""
 
