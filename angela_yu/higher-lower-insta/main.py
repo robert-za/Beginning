@@ -15,7 +15,7 @@ def disassembly_dict(dict):
     print(f"Compare: {name}, a {desc}, from {country}.")
     return count
 
-def initialize():
+def initialize(logo_init, data_init):
     """
     Chooses two random dictionaries from data.py and returns followage_count of both
     as a tuple.
@@ -54,6 +54,7 @@ def player_choice(pair_tuple):
             return True
         else:
             return False
+    
 
 def next_pair():
     """
@@ -74,7 +75,7 @@ def next_pair():
 
     return count_a, count_b
 
-pair_tuple_followage = initialize()
+pair_tuple_followage = initialize(logo, data)
 if player_choice(pair_tuple_followage) == True:
     while player_choice(next_pair()) and len(data) > 0:
         pass
