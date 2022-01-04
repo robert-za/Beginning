@@ -33,6 +33,9 @@ resources = {
 
 
 def drink_choice():
+    """
+    Asks user for a type of coffee and returns the string of coffee
+    """
     drink = ''
     while drink not in MENU:
         drink = input("What would you like? espresso/latte/cappuccino: ")
@@ -92,19 +95,30 @@ def check_cash(user_drink, input_sum):
             elif MENU[drink]["cost"] < input_sum:
                 change = input_sum - float(MENU[drink]["cost"])
                 print(f"Here is your change: {change}")
-                """
-                placeholder for offering change
-                """
-                pass
+                return change
             else:
                 print("Not enough money. Your coffee is ${cash}. Add more and try again.")
                 return False
+
+
+def substract_ingredients(user_drink, MENU):
+    """
+    placeholder
+    """
+    pass
+
+def add_coins_to_machine(coins_in):
+    """
+    placeholder
+    """
+    pass
+
 
 """
 C0DE L0GIC - EXECUTI0N
 """
 user_drink = drink_choice()
-print(check_resources(user_drink, resources, MENU))
+# print(check_resources(user_drink, resources, MENU))
 
 if check_resources(user_drink, resources, MENU) == True:
     coins_in = insert_coins()
@@ -115,7 +129,7 @@ if check_cash(user_drink, coins_in) == True:
 """
 T0-D0:
 
-- offer change
+- offer change [V]
 
 - secret word for switch_off()
 
