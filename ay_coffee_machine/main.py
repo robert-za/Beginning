@@ -107,12 +107,16 @@ def substract_ingredients(user_drink, MENU):
     """
     pass
 
-def add_coins_to_machine(coins_in):
-    """
-    placeholder
-    """
+def return_change(change, resources):
+    if isinstance(change, int):
+        print(f"Have your {change} back.")
+        resources["money"] -= change
+
     pass
 
+
+def add_coins_to_machine(change):
+    pass
 
 """
 C0DE L0GIC - EXECUTI0N
@@ -125,6 +129,8 @@ if check_resources(user_drink, resources, MENU) == True:
 
 if check_cash(user_drink, coins_in) == True:
     print(f"Here is your {user_drink}")
+elif isinstance(check_cash(user_drink, coins_in), int):
+    pass
 
 """
 T0-D0:
