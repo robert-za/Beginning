@@ -88,31 +88,41 @@ def insert_coins():
 
 
 def check_cash(user_drink, input_sum):
+    """
+    Three options: too much, equal or not enough
+          Returns: float   , True  or False
+    """
     for drink in MENU:
         if drink == user_drink:
             if MENU[drink]["cost"] == input_sum:
                 return True
             elif MENU[drink]["cost"] < input_sum:
                 change = input_sum - float(MENU[drink]["cost"])
-                print(f"Here is your change: {change}")
+                # print(f"Here is your change: {change}")
                 return change
             else:
-                print("Not enough money. Your coffee is ${cash}. Add more and try again.")
+                print(f"Not enough money. Your coffee is ${MENU[user_drink]['cost']}. Add more and try again.")
                 return False
 
 
 def substract_ingredients(user_drink, MENU):
     """
-    placeholder
+    After successful transaction, function removes resources 
+    from dictionary used for coffee preparation.
     """
-    pass
+    for drink in MENU:
+        if drink == user_drink:
+            for ingredient_menu in MENU[drink]["ingredients"]:
+                for ingredient_resources in resources:
+                    if ingredient_menu == ingredient_resources:
+                        resources[ingredient_resources] -= MENU[drink]["ingredients"][ingredient_menu]
+                        # print((ingredient_menu))
+                        # print((ingredient_resources))
 
 def return_change(change, resources):
-    if isinstance(change, int):
-        print(f"Have your {change} back.")
+    if isinstance(change, float):
+        print(f"Have your ${change} back.")
         resources["money"] -= change
-
-    pass
 
 
 def add_coins_to_machine(change):
@@ -126,24 +136,30 @@ user_drink = drink_choice()
 
 if check_resources(user_drink, resources, MENU) == True:
     coins_in = insert_coins()
-
 if check_cash(user_drink, coins_in) == True:
-    print(f"Here is your {user_drink}")
-elif isinstance(check_cash(user_drink, coins_in), int):
-    pass
+    print(f"Here is your {user_drink}.")
+    substract_ingredients(user_drink, MENU)
+    # print(resources)
+elif isinstance(check_cash(user_drink, coins_in), float):
+    substract_ingredients(user_drink, MENU)
+    change = check_cash(user_drink, coins_in)
+    return_change(change, resources)
+    # print(resources)
+else: 
+    check_cash(user_drink, coins_in)
 
 """
 T0-D0:
 
 - offer change [V]
 
-- secret word for switch_off()
+- secret word for switch_off() [X]
 
-- printing report: print_report()
+- printing report: print_report() [X]
 
-- substract ingredients from resources when transaction is successful
+- substract ingredients from resources when transaction is successful [V]
 
-- add coins to the machine
+- add coins to the machine [X]
 
 """
 
