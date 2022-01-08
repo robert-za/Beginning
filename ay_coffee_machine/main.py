@@ -126,6 +126,9 @@ def return_change(change, resources):
 
 
 def add_coins_to_machine(change):
+    """
+    placeholder
+    """
     pass
 
 """
