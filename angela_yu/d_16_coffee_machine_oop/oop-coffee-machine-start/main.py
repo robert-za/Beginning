@@ -4,21 +4,12 @@ from money_machine import MoneyMachine
 
 print("coffee machine!")
 
-# coffee_choices = Menu()
-# user_choice = "Not Selected"
-# while user_choice not in coffee_choices.get_items():
-#     user_choice = input(f"What coffee woulda like? {coffee_choices.get_items()}")
-
-# is_drink_available = Menu()
-# # print(type(is_drink_available.find_drink(user_choice)))
-
 is_on = True
 coffee_choices = Menu()
 coffee_maker = CoffeeMaker()
 money_machine = MoneyMachine()
 
 while is_on:
-
     choice = input(f"What would you like? {coffee_choices.get_items()}")
     if choice in coffee_choices.get_items():
         user_drink = coffee_choices.find_drink(choice)
