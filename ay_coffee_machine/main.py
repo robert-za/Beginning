@@ -132,7 +132,7 @@ def add_coins_to_machine(change):
     pass
 
 """
-C0DE L0GIC - EXECUTI0N
+C0DE L0GIC - EXECUTI0N - for debugging purposes as for now
 """
 user_drink = drink_choice()
 # print(check_resources(user_drink, resources, MENU))
@@ -147,8 +147,9 @@ elif isinstance(check_cash(user_drink, coins_in), float):
     substract_ingredients(user_drink, MENU)
     change = check_cash(user_drink, coins_in)
     return_change(change, resources)
+    print(f"Here is your {user_drink}.")
     # print(resources)
-else: 
+else:
     check_cash(user_drink, coins_in)
 
 """
