@@ -24,12 +24,12 @@ turtle.colormode(255)
 #Init
 johnny = Turtle()
 johnny.penup()
+johnny.hideturtle()
 johnny.backward(500)
 johnny.right(90)
 johnny.forward(300)
 johnny.left(90)
 #End of Init
-# johnny.pendown()
 johnny.pensize(20)
 johnny.speed(0)
 
@@ -48,6 +48,17 @@ for y in range(10):
         johnny.forward(50)
         johnny.right(90)
         johnny.dot(20, random.choice(color_list))
+
+# number_of_dots = 100
+# for dot_count in range(1, number_of_dots + 1):
+#     johnny.dot(20, random.choice(color_list))
+#     johnny.forward(50)
+#     if dot_count % 10 == 0:
+#         johnny.setheading(90)
+#         johnny.forward(50)
+#         johnny.setheading(180)
+#         johnny.forward(500)
+#         johnny.setheading(0)
 
 screen = Screen()
 screen.exitonclick()
