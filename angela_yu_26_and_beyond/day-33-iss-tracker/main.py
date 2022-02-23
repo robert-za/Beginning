@@ -1,9 +1,8 @@
-from sqlite3 import paramstyle
 import requests
 from datetime import datetime
 
-MY_LAT = 52.229675
-MY_LNG = 21.012230
+MY_LAT = 12.123
+MY_LNG = 21.123
 
 # response = requests.get(url="http://api.open-notify.org/iss-now.json")
 # response.raise_for_status()
