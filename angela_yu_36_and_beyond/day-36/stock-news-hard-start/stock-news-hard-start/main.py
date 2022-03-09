@@ -1,37 +1,50 @@
-STOCK = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+import os, requests, datetime
+from twilio.rest import Client
+
+STOCK = "NVDA"
+COMPANY_NAME = "Nvidia"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
+date = []
+today = datetime.date.today()
+date.append(str(today))
+yesterday = today - datetime.timedelta(days=1)
+date.append(str(yesterday))
+before_yesterday = yesterday - datetime.timedelta(days=1)
+date.append(str(before_yesterday))
 
-## STEP 1: Use https://newsapi.org/docs/endpoints/everything
-# When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
-#HINT 1: Get the closing price for yesterday and the day before yesterday. Find the positive difference between the two prices. e.g. 40 - 20 = -20, but the positive difference is 20.
-#HINT 2: Work out the value of 5% of yerstday's closing stock price. 
+price_request_parameters = {
+    "function": "TIME_SERIES_DAILY",
+    "symbol": STOCK,
+    "apikey": os.environ.get("AV_API_KEY")
+}
 
+price_response = requests.get(url=STOCK_ENDPOINT, params=price_request_parameters)
+price_response.raise_for_status()
+yesterday_close = float(price_response.json()["Time Series (Daily)"][date[1]]["4. close"])
+before_yesterday_close = float(price_response.json()["Time Series (Daily)"][date[2]]["4. close"])
+price_difference = round((yesterday_close - before_yesterday_close) / yesterday_close * 100,2)
+up_down = None
+if price_difference > 0:
+    up_down = "🔺"
+else:
+    up_down = "🔻"
 
+if abs(price_difference) >= 5:
+    news_parameters = {
+        "apiKey": os.environ.get("NEWS_API_KEY"),
+        "qInTitle": COMPANY_NAME,
+        "from": before_yesterday,
+        "to": today,
+        "sortBy": "popularity",
+        "language": "en"
+    }
+    news_response = requests.get(url=NEWS_ENDPOINT,params=news_parameters)
+    news = news_response.json()["articles"][:3]
 
-## STEP 2: Use https://newsapi.org/docs/endpoints/everything
-# Instead of printing ("Get News"), actually fetch the first 3 articles for the COMPANY_NAME. 
-#HINT 1: Think about using the Python Slice Operator
-
-
-
-## STEP 3: Use twilio.com/docs/sms/quickstart/python
-# Send a separate message with each article's title and description to your phone number. 
-#HINT 1: Consider using a List Comprehension.
-
-
-
-#Optional: Format the SMS message like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
-
+formatted_articles = [f"{STOCK}: {up_down}{price_difference}%\nHeadline: {article['title']}. \nBrief: {article['description']}" for article in news]
+client = Client(os.environ.get("TWILIO_SID"), os.environ.get("TWILIO_AUTH_TOKEN"))
+for article in formatted_articles:
+    message = client.messages.create(body=article, from_= os.environ.get("MY_FROM_NUMBER"),to=os.environ.get("MY_NUM"))
